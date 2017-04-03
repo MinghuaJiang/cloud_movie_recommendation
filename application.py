@@ -14,6 +14,14 @@ application = Flask(__name__)
 def test():
     return "this is a rate limit test"
 
+@application.route('/rate-limited2')
+@rate_limit_redis.ratelimit(limit=15, per=60*1)
+def test2():
+    return "this is a rate limit test2"
+
+@application.route('/')
+def hello():
+    return "hello world"
 
 if __name__ == '__main__':
 	application.debug = True
