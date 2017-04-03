@@ -1,12 +1,11 @@
-from redis import Redis
-from redis import ConnectionPool
+from rediscluster import StrictRedisCluster
 import time
 from functools import update_wrapper
 from flask import request, g
 import json
 
-pool = ConnectionPool(host='movielens-redis.y4gliv.clustercfg.use1.cache.amazonaws.com', port=6379)
-redis = Redis(connection_pool=pool)
+nodes = [{"host": 'movielens-redis.y4gliv.clustercfg.use1.cache.amazonaws.com', "port": "6379"}]
+redis = StrictRedisCluster(startup_nodes=nodes, decode_responses=True, skip_full_coverage_check=True)
 
 
 class RateLimit(object):
