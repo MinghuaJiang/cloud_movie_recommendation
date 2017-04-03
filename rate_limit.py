@@ -12,7 +12,7 @@ def get_limiter(app):
     limiter = Limiter(
         app,
         key_func=limit_function,
-        global_limits=["200 per day", "50 per hour"]
+        global_limits=["20000 per day", "1000 per hour"]
     )
     return limiter
 
