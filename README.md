@@ -1,5 +1,5 @@
 # movielens_movie_recommendation
-UVA CS6501-010 Final Project
+UVA CS6501-010 Cloud Computing Final Project
 
 In this project, we will use the Movielens dataset and based on the instruction below to build a Spark Movie Recommendation Service using Flask.
 
