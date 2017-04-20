@@ -25,7 +25,7 @@ https://github.com/amplab/spark-ec2
 
 https://www.codementor.io/jadianes/building-a-recommender-with-apache-spark-python-example-app-part1-du1083qbw
 https://www.codementor.io/jadianes/building-a-web-service-with-apache-spark-flask-example-app-part2-du1083854
-http://ampcamp.berkeley.edu/big-data-mini-course/movie-recommendation-with-mllib.html
+https://databricks-training.s3.amazonaws.com/movie-recommendation-with-mllib.html
 
 5. Port the service to AWS.
 6. Build more algorithms using Spark.
