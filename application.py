@@ -9,6 +9,7 @@ from wtforms.validators import InputRequired, Email, Length, EqualTo
 from dao import UserDao
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
+import mock_api
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -137,25 +138,34 @@ def reset():
 @application.route("/movies/top_rated", methods=['GET'])
 def movies_top_rated():
     page = request.args.get('page')
+    json = mock_api.get_paging_top_rated_movies()
     return render_template('movie-list.html')
 
 
 @application.route("/movies/most_popular", methods=['GET'])
 def movies_most_popular():
     page = request.args.get('page')
+    json = mock_api.get_most_popular_movies()
     return render_template('movie-list.html')
 
 
 @application.route("/movies/genre/<genre>", methods=['GET'])
 def movies_genre(genre):
     page = request.args.get('page')
+    json = mock_api.get_paging_genre_movies(page)
     return render_template('movie-list.html')
 
 
 @application.route("/movie/<int:movie_id>", methods=['GET'])
 def movie_detail(movie_id):
-    page = request.args.get('page')
+    #you can choose to call these api in js as well
+    #json = mock_api.detail(movie_id)
     return render_template('movie-detail.html')
+
+
+@application.route("/search/<query>", methods=['GET'])
+def search(query):
+    return mock_api.search(query)
 
 
 @application.route('/logout')
