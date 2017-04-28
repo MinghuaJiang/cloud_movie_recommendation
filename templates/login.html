@@ -9,10 +9,12 @@ Login
 {{super()}}
 <link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
 <link rel="stylesheet" href="{{url_for('.static', filename='index.css')}}">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-     <nav class="navbar navbar-inverse navbar-fixed-top">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -25,16 +27,42 @@ Login
         </div>
       </div>
     </nav>
-    <div class="container">
 
-      <form class="form-signin" method="POST" action="/login">
-        <h3 class="form-signin-heading">Please sign in</h3>
-        {{ form.hidden_tag() }}
-        {{ wtf.form_field(form.username) }}
-        {{ wtf.form_field(form.password) }}
-        {{ wtf.form_field(form.remember) }}
-        <button class="btn btn-medium btn-primary btn-block" type="submit">Sign in</button>
-      </form>
+    <div id="login-overlay" class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Login to MovieLens</h4>
+          </div>
+          <div class="modal-body">
+              <div class="row">
+                  <div class="col-xs-6" style="padding-right:120px">
+                      <div class="well">
+                          <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
+                              {{ form.hidden_tag() }}
+                              {{ wtf.form_field(form.username) }}
+                              {{ wtf.form_field(form.password) }}
+                              {{ wtf.form_field(form.remember) }}
+                              <button type="submit" class="btn btn-success btn-block">Login</button>
+                              <h5></h5>
+                              <a href="/forgot">Forget Password?</a>
+                          </form>
+                      </div>
+                  </div>
+                  <div class="col-xs-6" style="float:right;padding-left:120px">
+                      <p class="lead">New User? Register Now!</p>
+                      <ul class="list-unstyled" style="line-height: 2">
+                          <li><span class="fa fa-check text-success"></span> Personalized Recommendation</li>
+                          <li><span class="fa fa-check text-success"></span> Most Popular Movies</li>
+                          <li><span class="fa fa-check text-success"></span> Top Rated Movies</li>
+                          <li><span class="fa fa-check text-success"></span> Movie Search</li>
+                          <li><span class="fa fa-check text-success"></span> Rate More Movies</li>
+                          <li><span class="fa fa-check text-success"></span> Add and View Comments</li>
+                      </ul>
+                      <p><a href="/signup" class="btn btn-info btn-block">Yes please, register now!</a></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 
-    </div> <!-- /container -->
 {% endblock %}
