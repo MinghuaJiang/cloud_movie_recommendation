@@ -11,7 +11,9 @@ Login
 <link rel="stylesheet" href="{{url_for('.static', filename='index.css')}}">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 {% endblock %}
-
+{% block javascript %}
+<script type="text/javascript" src="{{url_for('static', filename = 'signin.js')}}"></script>
+{% endblock %}
 {% block content %}
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -27,7 +29,12 @@ Login
         </div>
       </div>
     </nav>
-
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          Check your email! We've sent you instructions for resetting your password.
+    </div>
     <div id="login-overlay" class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
@@ -37,7 +44,7 @@ Login
               <div class="row">
                   <div class="col-xs-6" style="padding-right:120px">
                       <div class="well">
-                          <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
+                          <form id="loginForm" method="POST" action="/login" novalidate="novalidate">
                               {{ form.hidden_tag() }}
                               {{ wtf.form_field(form.username) }}
                               {{ wtf.form_field(form.password) }}
