@@ -131,6 +131,30 @@ def reset():
     return render_template('reset.html', form=form)
 
 
+@application.route("/movies/top_rated", methods=['GET'])
+def movies_top_rated():
+    page = request.args.get('page')
+    return render_template('movie-list.html')
+
+
+@application.route("/movies/most_popular", methods=['GET'])
+def movies_most_popular():
+    page = request.args.get('page')
+    return render_template('movie-list.html')
+
+
+@application.route("/movies/genre/<genre>", methods=['GET'])
+def movies_genre(genre):
+    page = request.args.get('page')
+    return render_template('movie-list.html')
+
+
+@application.route("/movie/<int:movie_id>", methods=['GET'])
+def movie_detail(movie_id):
+    page = request.args.get('page')
+    return render_template('movie-detail.html')
+
+
 @application.route('/logout')
 @login_required
 def logout():
