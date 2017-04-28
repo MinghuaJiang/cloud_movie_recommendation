@@ -1,4 +1,5 @@
 import logging
+import json
 from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
@@ -13,7 +14,9 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 application = Flask(__name__)
-application.config['SECRET_KEY'] = 'lCdxqjiGyPj1Bkx/cY+G33VDaoTs5jtzUiztJJSq'
+with open('aws_config_secret.json') as cred:
+    creds = json.load(cred)
+    application.config['SECRET_KEY'] = creds['aws_secret_access_key']
 Bootstrap(application)
 login_manager = LoginManager()
 login_manager.init_app(application)
