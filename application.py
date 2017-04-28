@@ -6,7 +6,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, HiddenField
 from custom_validators import Username
 from wtforms.validators import InputRequired, Email, Length, EqualTo
-from dao import UserDao
+from dao import MockUserDao
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
 import mock_api
@@ -22,7 +22,7 @@ Bootstrap(application)
 login_manager = LoginManager()
 login_manager.init_app(application)
 login_manager.login_view = 'login'
-userDao = UserDao()
+userDao = MockUserDao()
 
 
 @login_manager.user_loader
