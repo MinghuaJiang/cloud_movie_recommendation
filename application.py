@@ -30,13 +30,14 @@ def load_user(username):
     u = userDao.find_user(username)
     if u is None:
         return None
-    return User(u['username'])
+    return User(u['username'], u['email'], u['isAdmin'])
 
 
 class User:
-    def __init__(self, username):
+    def __init__(self, username, email, isAdmin):
         self.username = username
-        self.email = None
+        self.email = email
+        self.isAdmin = isAdmin
 
     def is_authenticated(self):
         return True
@@ -95,7 +96,7 @@ def login():
     if request.method == 'POST' and form.validate_on_submit():
         user = userDao.find_user(form.username.data)
         if user and User.validate_login(user["password"], form.password.data):
-            user_obj = User(user['username'])
+            user_obj = User(user['username'], user['email'], user['isAdmin'])
             login_user(user_obj, remember=form.remember.data)
             return redirect(url_for("index"))
 
@@ -109,7 +110,7 @@ def signup():
         hashed_password = generate_password_hash(form.password.data, method='sha256')
         userDao.add_new_user(form.username.data, form.email.data, hashed_password)
         user = userDao.find_user(form.username.data)
-        user_obj = User(user['username'])
+        user_obj = User(user['username'], user['email'], user['isAdmin'])
         login_user(user_obj)
         return redirect(url_for("index"))
 
@@ -138,34 +139,27 @@ def reset():
 @application.route("/movies/top_rated", methods=['GET'])
 def movies_top_rated():
     page = request.args.get('page')
-    json = mock_api.get_paging_top_rated_movies()
+    type = 'top_rated'
     return render_template('movie-list.html')
 
 
 @application.route("/movies/most_popular", methods=['GET'])
 def movies_most_popular():
     page = request.args.get('page')
-    json = mock_api.get_most_popular_movies()
+    type = 'most_popular'
     return render_template('movie-list.html')
 
 
 @application.route("/movies/genre/<genre>", methods=['GET'])
 def movies_genre(genre):
     page = request.args.get('page')
-    json = mock_api.get_paging_genre_movies(page)
+    type = 'genre'
     return render_template('movie-list.html')
 
 
 @application.route("/movie/<int:movie_id>", methods=['GET'])
 def movie_detail(movie_id):
-    #you can choose to call these api in js as well
-    #json = mock_api.detail(movie_id)
     return render_template('movie-detail.html')
-
-
-@application.route("/search/<query>", methods=['GET'])
-def search(query):
-    return mock_api.search(query)
 
 
 @application.route('/logout')
