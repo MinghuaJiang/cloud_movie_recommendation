@@ -131,7 +131,6 @@ def reset():
     form = ResetForm(token=request.args.get("token"))
     if request.method == 'POST' and form.token.data and form.validate_on_submit():
         return redirect(url_for('login'))
-
     return render_template('reset.html', form=form)
 
 
@@ -139,30 +138,30 @@ def reset():
 def movies_top_rated():
     page = request.args.get('page')
     type = 'top_rated'
-    print(api.get_top_rated_movies())
-    return render_template('movie-list.html')
+    datalist=json.loads(api.get_top_rated_movies())
+    return render_template('movie-list.html', datalist=datalist)
 
 
 @application.route("/movies/most_popular", methods=['GET'])
 def movies_most_popular():
     page = request.args.get('page')
     type = 'most_popular'
-    print(api.get_most_popular_movies())
-    return render_template('movie-list.html')
+    datalist=json.loads(api.get_most_popular_movies())
+    return render_template('movie-list.html', datalist=datalist)
 
 
 @application.route("/movies/genre/<genre>", methods=['GET'])
 def movies_genre(genre):
     page = request.args.get('page')
     type = 'genre'
-    print(api.get_paging_genre_movies(genre))
-    return render_template('movie-list.html')
+    datalist=json.loads(api.get_paging_genre_movies(genre))
+    return render_template('movie-list.html', datalist=datalist)
 
 
 @application.route("/movie/<int:movie_id>", methods=['GET'])
 def movie_detail(movie_id):
-    print(api.detail(movie_id))
-    return render_template('movie-detail.html')
+    data=json.loads(api.detail(movie_id))
+    return render_template('movie-detail.html', data=data)
 
 
 @application.route('/logout')
