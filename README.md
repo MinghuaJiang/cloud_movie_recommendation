@@ -27,6 +27,14 @@ https://www.codementor.io/jadianes/building-a-recommender-with-apache-spark-pyth
 https://www.codementor.io/jadianes/building-a-web-service-with-apache-spark-flask-example-app-part2-du1083854
 https://databricks-training.s3.amazonaws.com/movie-recommendation-with-mllib.html
 
+1. Following command start up server (python 2.7) (pip install not exist model)
+
+`python application.py`
+
+2. Open webpage
+
+`localhost:5000`
+
 5. Port the service to AWS.
 6. Build more algorithms using Spark.
 7. Build Web App.
