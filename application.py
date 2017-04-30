@@ -9,7 +9,7 @@ from wtforms.validators import InputRequired, Email, Length, EqualTo
 from dao import UserDao
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
-import mock_api
+import mock_api as api
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -84,10 +84,9 @@ class ResetForm(FlaskForm):
 
 
 @application.route("/")
-@login_required
+#@login_required
 def index():
-    return render_template('index.html', name=current_user.username)
-
+    return render_template('index.html')
 
 @application.route("/login", methods=['GET', 'POST'])
 def login():
@@ -140,6 +139,7 @@ def reset():
 def movies_top_rated():
     page = request.args.get('page')
     type = 'top_rated'
+    print(api.get_top_rated_movies())
     return render_template('movie-list.html')
 
 
@@ -147,6 +147,7 @@ def movies_top_rated():
 def movies_most_popular():
     page = request.args.get('page')
     type = 'most_popular'
+    print(api.get_most_popular_movies())
     return render_template('movie-list.html')
 
 
@@ -154,11 +155,13 @@ def movies_most_popular():
 def movies_genre(genre):
     page = request.args.get('page')
     type = 'genre'
+    print(api.get_paging_genre_movies(genre))
     return render_template('movie-list.html')
 
 
 @application.route("/movie/<int:movie_id>", methods=['GET'])
 def movie_detail(movie_id):
+    print(api.detail(movie_id))
     return render_template('movie-detail.html')
 
 
