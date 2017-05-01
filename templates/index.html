@@ -23,20 +23,38 @@ Dashboard
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li><a href="movies/most_popular">Movies</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" >Movies <span class="caret"></span></a>
+                <ul class="dropdown-menu" id="movie_dropdown">
+                  <li><a href="movies/most_popular">Most Popular</a></li>
+                  <li><a href="movies/top_rated">Top Rated</a></li>
+                </ul>
+            </li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" >Genres <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="movies/genre/Action">Action</a></li>
-                  <li><a href="#">Genre1</a></li>
-                  <li><a href="#">Genre2</a></li>
-                  <li><a href="#">Genre3</a></li>
-                  <li><a href="#">Genre4</a></li>
+                  <li><a href="movies/genre/Adventure">Adventure</a></li>
+                  <li><a href="movies/genre/Animation">Animation</a></li>
+                  <li><a href="movies/genre/Children">Children</a></li>
+                  <li><a href="movies/genre/Comedy">Comedy</a></li>
+                  <li><a href="movies/genre/Crime">Crime</a></li>
+                  <li><a href="movies/genre/Documentary">Documentary</a></li>
+                  <li><a href="movies/genre/Drama">Drama</a></li>
+                  <li><a href="movies/genre/Horror">Horror</a></li>
+                  <li><a href="movies/genre/Musical">Musical</a></li>
+                  <li><a href="movies/genre/Mystery">Mystery</a></li>
+                  <li><a href="movies/genre/Romance">Romance</a></li>
+                  <li><a href="movies/genre/Sci-Fi">Sci-Fi</a></li>
+                  <li><a href="movies/genre/Thriller">Thriller</a></li>
+                  <li><a href="movies/genre/Western">Western</a></li>
+                  <li><a href="movies/genre/War">War</a></li>
                 </ul>
              </li>   
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+             <li><a href="">{{name}}</a></li>
+             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search Movie...">

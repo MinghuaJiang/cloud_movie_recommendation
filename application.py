@@ -84,9 +84,10 @@ class ResetForm(FlaskForm):
 
 
 @application.route("/")
-#@login_required
+@login_required
 def index():
-    return render_template('index.html')
+    return render_template('index.html', name=current_user.username)
+
 
 @application.route("/login", methods=['GET', 'POST'])
 def login():
@@ -153,6 +154,8 @@ def movies_most_popular():
 @application.route("/movies/genre/<genre>", methods=['GET'])
 def movies_genre(genre):
     page = request.args.get('page')
+    if page is None:
+        page = 1
     type = 'genre'
     datalist=json.loads(api.get_paging_genre_movies(genre))
     return render_template('movie-list.html', datalist=datalist)
