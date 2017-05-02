@@ -64,8 +64,8 @@ class LoginForm(FlaskForm):
 
 class RegistrationForm(FlaskForm):
     email = StringField("email", validators=[InputRequired(), Email(message="invalid email"), Length(max=50)])
-    username = StringField('username', validators=[Username(), InputRequired(), Length(min=4, max=15)])
-    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
+    username = StringField('username', validators=[Username(), InputRequired(), Length(min=4, max=15)], render_kw = {"placeholder": "Please enter 4 - 15 characters"})
+    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)], render_kw = {"placeholder": "Use at least 8 characters"})
     confirm = PasswordField('retype password',
                             validators=[EqualTo('password', message="password not match"), InputRequired(),
                                         Length(min=8, max=80)])
