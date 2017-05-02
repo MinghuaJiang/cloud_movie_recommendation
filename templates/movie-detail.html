@@ -50,9 +50,17 @@ Dashboard
                   <li><a href="/movies/genre/Western">Western</a></li>
                   <li><a href="/movies/genre/War">War</a></li>
                 </ul>
-             </li>   
+             </li>
+             <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" >Administration <span class="caret"></span></a>
+                <ul class="dropdown-menu" id="admin_dropdown">
+                  <li id="retrain_model"><a>Retrain Model</a></li>
+                  <li id="update_dataset"><a>Update Dataset</a></li>
+                </ul>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="">{{name}}</a></li>
             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
           </ul>
           <form class="navbar-form navbar-right">
