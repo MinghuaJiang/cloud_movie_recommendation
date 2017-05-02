@@ -140,16 +140,16 @@ def reset():
 def movies_top_rated():
     page = request.args.get('page')
     type = 'top_rated'
-    datalist=json.loads(api.get_top_rated_movies())
-    return render_template('movie-list.html', datalist=datalist, type="Top Rated Movies", name=current_user.username)
+    datalist=json.loads(api.get_paging_top_rated_movies(page))
+    return render_template('movie-list.html', datalist=datalist, page=page, type="Top Rated Movies", name=current_user.username)
 
 
 @application.route("/movies/most_popular", methods=['GET'])
 def movies_most_popular():
     page = request.args.get('page')
     type = 'most_popular'
-    datalist=json.loads(api.get_most_popular_movies())
-    return render_template('movie-list.html', datalist=datalist, type="Most Popular Movies", name=current_user.username)
+    datalist=json.loads(api.get_paging_most_popular_movies(page))
+    return render_template('movie-list.html', datalist=datalist, page=page, type="Most Popular Movies", name=current_user.username)
 
 
 @application.route("/movies/genre/<genre>", methods=['GET'])
@@ -158,8 +158,8 @@ def movies_genre(genre):
     if page is None:
         page = 1
     type = 'genre'
-    datalist=json.loads(api.get_paging_genre_movies(genre))
-    return render_template('movie-list.html', datalist=datalist, type=genre+" Movies", name=current_user.username)
+    datalist=json.loads(api.get_paging_genre_movies(page))
+    return render_template('movie-list.html', datalist=datalist, page=page, type=genre+" Movies", name=current_user.username)
 
 
 @application.route("/movie/<int:movie_id>", methods=['GET'])

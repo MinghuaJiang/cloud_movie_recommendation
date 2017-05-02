@@ -106,6 +106,17 @@ def get_most_popular_movies():
 
 def get_paging_most_popular_movies(page):
     result = dict()
+    result["movie"] = [
+        {
+            'movie_id': '3',
+            'movie_name': '3',
+            'movie_url': '//image.tmdb.org/t/p/w300//zpaQwR0YViPd83bx1e559QyZ35i.jpg'
+        },
+        {
+            'movie_id': '4',
+             'movie_name': '4',
+             'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/iNpz2DgTsTMPaDRZq2tnbqjL2vF.jpg'
+        }]
     return json.dumps(result)
 
 
@@ -127,10 +138,119 @@ def get_top_rated_movies():
 
 def get_paging_top_rated_movies(page):
     result = dict()
+    result["movie"] = [
+        {
+            'movie_id': '3',
+            'movie_name': '3',
+            'movie_url': '//image.tmdb.org/t/p/w300//zpaQwR0YViPd83bx1e559QyZ35i.jpg'
+        },
+        {
+            'movie_id': '5',
+             'movie_name': '5',
+             'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/iNpz2DgTsTMPaDRZq2tnbqjL2vF.jpg'
+        }]
     return json.dumps(result)
 
 
 def get_paging_genre_movies(page):
     result = dict()
+    result["movie"] = [
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        
+        {
+            'movie_id': '3',
+             'movie_name': '3',
+             'movie_url': '//image.tmdb.org/t/p/w300//zpaQwR0YViPd83bx1e559QyZ35i.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        
+        {
+            'movie_id': '3',
+             'movie_name': '3',
+             'movie_url': '//image.tmdb.org/t/p/w300//zpaQwR0YViPd83bx1e559QyZ35i.jpg'
+        },{
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        {
+            'movie_id': '1',
+            'movie_name': '1',
+            'movie_url': '//image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg'
+        },
+        
+        {
+            'movie_id': '3',
+             'movie_name': '3',
+             'movie_url': '//image.tmdb.org/t/p/w300//zpaQwR0YViPd83bx1e559QyZ35i.jpg'
+        }]
     return json.dumps(result)
 
