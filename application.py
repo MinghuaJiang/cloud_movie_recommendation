@@ -86,8 +86,9 @@ class ResetForm(FlaskForm):
 @application.route("/")
 @login_required
 def index():
-    return render_template('index.html', name=current_user.username)
-
+    datalist_pop=json.loads(api.get_most_popular_movies())
+    datalist_rate=json.loads(api.get_top_rated_movies())
+    return render_template('index.html', datalist_pop=datalist_pop, datalist_rate=datalist_rate, name=current_user.username)
 
 @application.route("/login", methods=['GET', 'POST'])
 def login():

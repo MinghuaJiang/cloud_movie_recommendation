@@ -31,7 +31,7 @@ Dashboard
                 </ul>
             </li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" >Genres <span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Genres <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="/movies/genre/Action">Action</a></li>
                   <li><a href="/movies/genre/Adventure">Adventure</a></li>
@@ -75,57 +75,28 @@ Dashboard
         <div class="col-sm-9 col-sm-offset-1 col-md-10 col-md-offset-1 main">
           <h2 class="page-header">Most Popular</h2>
           <div class="row placeholders">
+            {% for movie in datalist_pop.movie[:8] %}
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/iNpz2DgTsTMPaDRZq2tnbqjL2vF.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <a href="/movie/{{ movie.movie_id }}"><img src="{{ movie.movie_url }}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail"></a>
               <h4></h4>
-              <span class="text-muted">The Fate of the Furious</span>
+              <span class="text-muted"><a href="/movie/{{ movie.movie_id }}">{{ movie.movie_name }}</a></span>
             </div>
-
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4></h4>
-              <span class="text-muted">The Boss of the Boy</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/eSVtBB2PVFbQiFWC7CQi3EjIZnn.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4></h4>
-              <span class="text-muted">Sing</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/tWqifoYuwLETmmasnGHO7xBjEtt.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4></h4>
-              <span class="text-muted">Beauty and the Beast</span>
-            </div>
-
+            {% endfor %}
           </div>
 
           <h2 class="sub-header">Highest Rated</h2>
           <div class="row placeholders">
+            {% for movie in datalist_rate.movie[:8] %}
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/iNpz2DgTsTMPaDRZq2tnbqjL2vF.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <a href="/movie/{{ movie.movie_id }}"><img src="{{ movie.movie_url }}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail"></a>
               <h4></h4>
-              <span class="text-muted">The Fate of the Furious</span>
+              <span class="text-muted"><a href="/movie/{{ movie.movie_id }}">{{ movie.movie_name }}</a></span>
             </div>
-
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/unPB1iyEeTBcKiLg8W083rlViFH.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4></h4>
-              <span class="text-muted">The Boss of the Boy</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/eSVtBB2PVFbQiFWC7CQi3EjIZnn.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4></h4>
-              <span class="text-muted">Sing</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/tWqifoYuwLETmmasnGHO7xBjEtt.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4></h4>
-              <span class="text-muted">Beauty and the Beast</span>
-            </div>
+            {% endfor %}
+          </div>
 
           </div>
 
         </div>
       </div>
-    </div>
 {% endblock %}

@@ -1,0 +1,650 @@
+<body>
+  <div ng-controller="AppController as app" class="ng-scope">
+    <header ng-controller="AppHeaderController as header" class="ng-scope">
+      <nav class="navbar navbar-inverse">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="padding: 20px 10px;">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="brand navbar-brand" href="/" style="padding: 10px 15px;">
+              <img width="176" height="45" src="https://docs.angularjs.org/img/angularjs-for-header-only.svg">
+            </a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li ng-hide="app.user.id" class=""><a ng-click="app.openLoginModal()">Login</a></li>
+              <li class="dropdown ng-hide" ng-show="app.user.id">
+                <a data-target="#" class="dropdown-toggle ng-binding" data-toggle="dropdown">
+                   <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="movies/favorites">My Favorites</a></li>
+                  <li><a href="movies/watchlist">My Watchlist</a></li>
+                  <li><a href="movies/rated">Movies I've Rated</a></li>
+                  <li><a ng-click="app.logout()">Logout</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a data-target="" class="dropdown-toggle" data-toggle="dropdown">
+                  Movies <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="movies/popular">Popular</a></li>
+                  <li><a href="movies/top_rated">Top Rated</a></li>
+                  <li><a href="movies/upcoming">Upcoming</a></li>
+                  <li><a href="movies/now_playing">Now playing</a></li>
+                </ul>
+              </li>
+              
+              <li class="dropdown">
+                <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Genres <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/28" class="ng-binding">Action</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/12" class="ng-binding">Adventure</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/16" class="ng-binding">Animation</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/35" class="ng-binding">Comedy</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/80" class="ng-binding">Crime</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/99" class="ng-binding">Documentary</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/18" class="ng-binding">Drama</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/10751" class="ng-binding">Family</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/14" class="ng-binding">Fantasy</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/10769" class="ng-binding">Foreign</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/36" class="ng-binding">History</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/27" class="ng-binding">Horror</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/10402" class="ng-binding">Music</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/9648" class="ng-binding">Mystery</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/10749" class="ng-binding">Romance</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/878" class="ng-binding">Science Fiction</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/53" class="ng-binding">Thriller</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/10770" class="ng-binding">TV Movie</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/10752" class="ng-binding">War</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' --><li ng-repeat="genre in header.movieGenres | orderBy:'label'" class="ng-scope">
+                    <a href="movies/genre/37" class="ng-binding">Western</a>                  
+                  </li><!-- end ngRepeat: genre in header.movieGenres | orderBy:'label' -->
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form navbar-right ng-pristine ng-valid" role="search">
+              <div class="form-group">
+                <input mdb-multi-search="" type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="search.query" placeholder="Search for a movie or person..." uib-typeahead="result.displayName for result in search.multiSearch($viewValue)" typeahead-wait-ms="400" typeahead-min-length="2" typeahead-template-url="components/multiSearch/multiSearch.directive.html" typeahead-popup-template-url="components/multiSearch/dropdown.html" typeahead-on-select="search.onSelectResult($item, $model, $label)" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-4-7859"><div class="dropdown autocomplete-dropdown ng-isolate-scope" ng-class="{'open':isOpen()}" uib-typeahead-popup="" id="typeahead-4-7859" matches="matches" active="activeIdx" select="select(activeIdx)" move-in-progress="moveInProgress" query="query" position="position" template-url="components/multiSearch/multiSearch.directive.html" popup-template-url="components/multiSearch/dropdown.html">
+  <ul class="dropdown-menu">
+      <!-- ngRepeat: match in matches -->
+  </ul>
+</div>
+              </div>
+            </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </header>
+
+    <!-- uiView:  --><div ui-view="" style="position: relative;" class="ng-scope"><!-- ngIf: movieCtrl.movie.backdrop_path --><mdb-backdrop path="movieCtrl.movie.backdrop_path" ng-if="movieCtrl.movie.backdrop_path" class="ng-scope ng-isolate-scope"><div class="backdrop-container fader" ng-show="loaded" style="">
+  <img class="backdrop-image" ng-src="https://image.tmdb.org/t/p/w1920//oDqbewoFuIEWA7UWurole6MzDGn.jpg" src="https://image.tmdb.org/t/p/w1920//oDqbewoFuIEWA7UWurole6MzDGn.jpg">
+</div></mdb-backdrop><!-- end ngIf: movieCtrl.movie.backdrop_path -->
+
+<div class="container ng-scope ng-isolate-scope" mdb-loading="" loading="movieCtrl.loading" id="movie-container"><div ng-transclude="">
+  <div class="row ng-scope">
+    <div class="col-sm-12">
+      <h1 class="page-header ng-binding">Ice Age 
+        <em class="small ng-binding" ng-show="movieCtrl.movie.release_date" style="">(2002)</em>
+        <em class="small ng-binding ng-hide" ng-show="!movieCtrl.movie.release_date &amp;&amp; movieCtrl.movie.status">(Released)</em>
+        <span ng-show="movieCtrl.movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right ng-hide" style="color: orange;"></span>
+      </h1>
+    </div>
+  </div>
+
+<!--   <div class="row">
+    <div class="col-sm-12">
+      <span class="visible-xxs-block">✔ Visible on DOUBLE EXTRA!! small</span>
+      <span class="visible-xs-block">✔ Visible on xtra small</span>
+      <span class="visible-sm-block">✔ Visible on small</span>
+      <span class="visible-md-block">✔ Visible on medium</span>
+      <span class="visible-lg-block">✔ Visible on large</span>
+    </div>
+  </div> -->
+
+  <div class="row ng-scope">
+    <div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
+      <div class="movie-poster">
+        <!-- ngIf: movieCtrl.movie.poster_path --><img ng-if="movieCtrl.movie.poster_path" class="media-object ng-scope" width="300" ng-src="https://image.tmdb.org/t/p/w300//zpaQwR0YViPd83bx1e559QyZ35i.jpg" alt="Ice Age" src="https://image.tmdb.org/t/p/w300//zpaQwR0YViPd83bx1e559QyZ35i.jpg"><!-- end ngIf: movieCtrl.movie.poster_path -->
+
+        <!-- ngIf: !movieCtrl.movie.poster_path && movieCtrl.movie.title -->
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- ngRepeat: genre in movieCtrl.movie.genres --><a ng-href="movies/genre/16" ng-repeat="genre in movieCtrl.movie.genres" style="display: inline-block; margin: 0px 5px 10px 0px;" class="ng-scope" href="movies/genre/16">
+            <h4 class="label label-primary ng-binding" style="font-size: 100%;">Animation</h4>
+          </a><!-- end ngRepeat: genre in movieCtrl.movie.genres --><a ng-href="movies/genre/35" ng-repeat="genre in movieCtrl.movie.genres" style="display:inline-block; margin:0 5px 10px 0;" class="ng-scope" href="movies/genre/35">
+            <h4 class="label label-primary ng-binding" style="font-size: 100%;">Comedy</h4>
+          </a><!-- end ngRepeat: genre in movieCtrl.movie.genres --><a ng-href="movies/genre/10751" ng-repeat="genre in movieCtrl.movie.genres" style="display:inline-block; margin:0 5px 10px 0;" class="ng-scope" href="movies/genre/10751">
+            <h4 class="label label-primary ng-binding" style="font-size: 100%;">Family</h4>
+          </a><!-- end ngRepeat: genre in movieCtrl.movie.genres --><a ng-href="movies/genre/12" ng-repeat="genre in movieCtrl.movie.genres" style="display:inline-block; margin:0 5px 10px 0;" class="ng-scope" href="movies/genre/12">
+            <h4 class="label label-primary ng-binding" style="font-size: 100%;">Adventure</h4>
+          </a><!-- end ngRepeat: genre in movieCtrl.movie.genres -->
+          <hr style="margin: 10px 0;">
+        </div>
+      </div>
+
+      <!-- torrents -->
+      <div class="row">
+        <div class="col-sm-12">
+          <p ng-show="movieCtrl.torrentsLoading" class="" style=""><i class="fa fa-spin fa-spinner"></i> Torrent information loading...</p>
+
+          <em ng-hide="movieCtrl.movie.torrentsError || movieCtrl.movie.torrents.length > 0 || movieCtrl.torrentsLoading" class="ng-hide" style="">No torrents available</em>
+
+          <em ng-show="movieCtrl.movie.torrentsError" class="ng-hide">Something went wrong - we couldn't retrieve torrent information for this movie</em>
+
+          <!-- ngRepeat: torrent in movieCtrl.movie.torrents -->
+          <hr style="margin-top: 10px;">
+        </div>
+      </div>
+      <!-- end -->
+
+      <!-- ngIf: movieCtrl.torrentUrl -->
+
+<!--       <div class="row">
+        <div class="col-sm-12">
+          <mdb-torrent-video source="'play-test/file.mp4'" type="video/mp4" poster="movieCtrl.movie.backdrop_path"></mdb-torrent-video>
+        </div>
+      </div> -->
+
+      <div class="row">
+        <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12">
+          <p ng-show="movieCtrl.movie.tagline" class="text-upper text-bold text-xl ng-binding" style="">They came. They thawed. They conquered.</p>
+          <p ng-show="movieCtrl.movie.overview" style="font-size: 1.1em;" class="ng-binding">With the impending ice age almost upon them, a mismatched trio of prehistoric critters – Manny the woolly mammoth, Diego the saber-toothed tiger and Sid the giant sloth – find an orphaned infant and decide to return it to its human parents. Along the way, the unlikely allies become friends but, when enemies attack, their quest takes on far nobler aims.</p>
+          <em ng-hide="movieCtrl.movie.overview" class="ng-hide" style="">No movie synopsis available</em>
+        </div>
+        <div class="col-md-4 col-xs-6 col-sm-5 col-xxs-12">
+          <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 20px;">
+            <p class="text-bold ng-binding" style="font-size: 6.3em; margin:0;">7.0</p>
+            <p class="text-upper small ng-binding" style="margin:0;">From 2904 votes</p>
+          </div>
+
+          <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 15px; border-top: 1px solid white;">
+            <span ng-mouseleave="reset()" ng-keydown="onKeydown($event)" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="10" aria-valuenow="" ng-show="app.user.id" ng-model="movieCtrl.movie.account_states.rated.value" max="10" ng-change="movieCtrl.ratingChanged()" class="ng-isolate-scope ng-valid ng-hide" style="">
+    <!-- ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="one" title="one" style=""></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="two" title="two"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="three" title="three"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="four" title="four"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="five" title="five"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="6" title="6"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="7" title="7"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="8" title="8"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="9" title="9"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="10" title="10"></i><!-- end ngRepeat: r in range track by $index -->
+</span>
+            <span ng-mouseleave="reset()" ng-keydown="onKeydown($event)" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="10" aria-valuenow="" ng-hide="app.user.id" readonly="readonly" ng-model="nothing" max="10" class="ng-isolate-scope ng-valid ng-touched" style="">
+    <!-- ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="one" title="one" style=""></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="two" title="two"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="three" title="three"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="four" title="four"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="five" title="five"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="6" title="6"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="7" title="7"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="8" title="8"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="9" title="9"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope glyphicon-star-empty" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" aria-valuetext="10" title="10"></i><!-- end ngRepeat: r in range track by $index -->
+</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <hr>
+          <div class="row">
+            <div class="col-xs-6 col-sm-3 col-md-4">
+              <p class="text-upper">Directed by</p>
+              <!-- ngRepeat: director in movieCtrl.movie.directors --><p ng-repeat="director in movieCtrl.movie.directors" class="ng-scope">
+                <a ng-href="person/5713" class="ng-binding" href="person/5713">Chris Wedge</a>
+              </p><!-- end ngRepeat: director in movieCtrl.movie.directors --><p ng-repeat="director in movieCtrl.movie.directors" class="ng-scope">
+                <a ng-href="person/5714" class="ng-binding" href="person/5714">Carlos Saldanha</a>
+              </p><!-- end ngRepeat: director in movieCtrl.movie.directors -->
+              <p ng-hide="movieCtrl.movie.directors.length" class="text-muted ng-hide" style="">Not available</p>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-4">
+              <p class="text-upper">Written by</p>
+              <!-- ngRepeat: writer in movieCtrl.movie.writers --><p ng-repeat="writer in movieCtrl.movie.writers" class="ng-scope">
+                <a ng-href="person/5716" class="ng-binding" href="person/5716">Michael Berg <em class="ng-binding">(Screenplay)</em></a>
+              </p><!-- end ngRepeat: writer in movieCtrl.movie.writers --><p ng-repeat="writer in movieCtrl.movie.writers" class="ng-scope">
+                <a ng-href="person/5715" class="ng-binding" href="person/5715">Michael J. Wilson <em class="ng-binding">(Screenplay)</em></a>
+              </p><!-- end ngRepeat: writer in movieCtrl.movie.writers --><p ng-repeat="writer in movieCtrl.movie.writers" class="ng-scope">
+                <a ng-href="person/5717" class="ng-binding" href="person/5717">Peter Ackerman <em class="ng-binding">(Screenplay)</em></a>
+              </p><!-- end ngRepeat: writer in movieCtrl.movie.writers --><p ng-repeat="writer in movieCtrl.movie.writers" class="ng-scope">
+                <a ng-href="person/5715" class="ng-binding" href="person/5715">Michael J. Wilson <em class="ng-binding">(Story)</em></a>
+              </p><!-- end ngRepeat: writer in movieCtrl.movie.writers --><p ng-repeat="writer in movieCtrl.movie.writers" class="ng-scope">
+                <a ng-href="person/930567" class="ng-binding" href="person/930567">Enrico Casarosa <em class="ng-binding">(Storyboard)</em></a>
+              </p><!-- end ngRepeat: writer in movieCtrl.movie.writers -->
+              <p ng-hide="movieCtrl.movie.writers.length" class="text-muted ng-hide" style="">Not available</p>
+            </div>
+            <div class="col-xs-12 col-sm-5 col-md-4">
+              <button ng-hide="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-success"><i class="fa fa-plus"></i> My Watchlist</button>
+              <button ng-show="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-warning ng-hide" style=""><i class="fa fa-minus"></i> My Watchlist</button>
+
+              <button ng-hide="movieCtrl.movie.account_states.favorite" ng-click="movieCtrl.toggleFavorite()" class="btn btn-block btn-lg btn-success"><i class="fa fa-plus"></i> My Favorites</button>
+              <button ng-show="movieCtrl.movie.account_states.favorite" ng-click="movieCtrl.toggleFavorite()" class="btn btn-block btn-lg btn-warning ng-hide"><i class="fa fa-minus"></i> My Favorites</button>
+
+              <button ng-click="movieCtrl.playTrailer()" ng-show="movieCtrl.getTrailer()" class="btn btn-block btn-lg btn-info" style=""><i class="fa fa-video-camera"></i> Watch Trailer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+  </div>
+  <div class="row ng-scope">
+    <div class="col-sm-12">
+      <h2 class="page-header">Cast</h2>
+    </div>
+  </div>
+  <div class="row ng-scope">
+    <!-- ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom: 30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/15757" href="person/15757">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//mB8HQPuL0DYtjjlFaU7TPKvKruJ.jpg" alt="Ray Romano" src="https://image.tmdb.org/t/p/w92//mB8HQPuL0DYtjjlFaU7TPKvKruJ.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa0cec%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa0cec%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/15757" href="person/15757">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Ray Romano</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Manny (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/5723" href="person/5723">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//rbq24AzthnwRXUYcVfUnP5bKN50.jpg" alt="John Leguizamo" src="https://image.tmdb.org/t/p/w92//rbq24AzthnwRXUYcVfUnP5bKN50.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa0e35%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa0e35%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/5723" href="person/5723">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">John Leguizamo</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Sid (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/5724" href="person/5724">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//lnk4HjUeqDlT6Kg9PaQsVIDpl56.jpg" alt="Denis Leary" src="https://image.tmdb.org/t/p/w92//lnk4HjUeqDlT6Kg9PaQsVIDpl56.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa18bc%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa18bc%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/5724" href="person/5724">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Denis Leary</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Diego (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/5725" href="person/5725">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//to8FHxK5fNSxNi0LGFt5lX4SFGq.jpg" alt="Goran Visnjic" src="https://image.tmdb.org/t/p/w92//to8FHxK5fNSxNi0LGFt5lX4SFGq.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa048a%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa048a%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/5725" href="person/5725">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Goran Visnjic</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Soto (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/70851" href="person/70851">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//kAyKg3rYGgIhB5KRaIWALuf78W3.jpg" alt="Jack Black" src="https://image.tmdb.org/t/p/w92//kAyKg3rYGgIhB5KRaIWALuf78W3.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa0ae7%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa0ae7%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/70851" href="person/70851">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Jack Black</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Zeke (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/5726" href="person/5726">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//vNru4woNzFrtEZr5AOSSoCInZdy.jpg" alt="Cedric the Entertainer" src="https://image.tmdb.org/t/p/w92//vNru4woNzFrtEZr5AOSSoCInZdy.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa35b9%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa35b9%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/5726" href="person/5726">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Cedric the Entertainer</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Carl (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/17401" href="person/17401">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//sceCvLiv8xe2jQzrVn39wvosVHG.jpg" alt="Stephen Root" src="https://image.tmdb.org/t/p/w92//sceCvLiv8xe2jQzrVn39wvosVHG.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa1e77%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa1e77%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/17401" href="person/17401">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Stephen Root</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Rhino / Start (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/5727" href="person/5727">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//ek6c21ennQEMXCJwTvKnPkGn60C.jpg" alt="Diedrich Bader" src="https://image.tmdb.org/t/p/w92//ek6c21ennQEMXCJwTvKnPkGn60C.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa6d97%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa6d97%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/5727" href="person/5727">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Diedrich Bader</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Saber-Toothed Tiger (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/21088" href="person/21088">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//6QuMtbD8kmhpwWhFKfNzEvHRLOu.jpg" alt="Alan Tudyk" src="https://image.tmdb.org/t/p/w92//6QuMtbD8kmhpwWhFKfNzEvHRLOu.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa178b%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa178b%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/21088" href="person/21088">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Alan Tudyk</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Lenny / Oscar / Dab (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/60019" href="person/60019">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//2tLdetmNFCt7PC969FlLXhzIU5A.jpg" alt="Lorri Bagley" src="https://image.tmdb.org/t/p/w92//2tLdetmNFCt7PC969FlLXhzIU5A.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa153e%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa153e%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/60019" href="person/60019">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Lorri Bagley</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Jennifer (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/13636" href="person/13636">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//l1ItJIV6PkWszahE9cv3ucsnmea.jpg" alt="Jane Krakowski" src="https://image.tmdb.org/t/p/w92//l1ItJIV6PkWszahE9cv3ucsnmea.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa423a%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa423a%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/13636" href="person/13636">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Jane Krakowski</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Rachel (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/5717" href="person/5717">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//zlWcU7pKd9904zWe2207Xu3sBrn.jpg" alt="Peter Ackerman" src="https://image.tmdb.org/t/p/w92//zlWcU7pKd9904zWe2207Xu3sBrn.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa0c96%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa0c96%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/5717" href="person/5717">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Peter Ackerman</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Dodo / Macrauchenia (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/1446460" href="person/1446460">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa11b6%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa11b6%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/1446460" href="person/1446460">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">P.J. Benjamin</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Dodo (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/52419" href="person/52419">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//uzqTbGXDrVp6j97OkbFBphJUmKf.jpg" alt="Josh Hamilton" src="https://image.tmdb.org/t/p/w92//uzqTbGXDrVp6j97OkbFBphJUmKf.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa38d4%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa38d4%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/52419" href="person/52419">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Josh Hamilton</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Dodo / Scrat (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/5713" href="person/5713">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//nilZ2PUXF5ELKftii18OLnAMMz0.jpg" alt="Chris Wedge" src="https://image.tmdb.org/t/p/w92//nilZ2PUXF5ELKftii18OLnAMMz0.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa46b5%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa46b5%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/5713" href="person/5713">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Chris Wedge</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Glyptodon (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/59695" href="person/59695">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//rc67RDrAKtN0qWBkB2AzXAxztHr.jpg" alt="Denny Dillon" src="https://image.tmdb.org/t/p/w92//rc67RDrAKtN0qWBkB2AzXAxztHr.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa0be5%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa0be5%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/59695" href="person/59695">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Denny Dillon</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Glyptodont (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/102794" href="person/102794">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path --><img ng-if="actor.profile_path" class="media-object ng-scope" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w92//bt7eQYLai0ForMF8AXGoo1FnX36.jpg" alt="Mitzi McCall" src="https://image.tmdb.org/t/p/w92//bt7eQYLai0ForMF8AXGoo1FnX36.jpg"><!-- end ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa1ff4%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa1ff4%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="ng-hide" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/102794" href="person/102794">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Mitzi McCall</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Baby Moeritherium (voice)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast --><div class="col-sm-4 col-xs-6 col-md-3 ng-scope" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/1446462" href="person/1446462">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <!-- ngIf: actor.profile_path -->
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image" data-src="holder.js/92x138/industrial/text:No \n Image" alt="92x138" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2292%22%20height%3D%22138%22%20viewBox%3D%220%200%2092%20138%22%20preserveAspectRatio%3D%22none%22%3E%3C!--%0ASource%20URL%3A%20holder.js%2F92x138%2Findustrial%2Ftext%3ANo%20%5Cn%20Image%0ACreated%20with%20Holder.js%202.8.2.%0ALearn%20more%20at%20http%3A%2F%2Fholderjs.com%0A(c)%202012-2015%20Ivan%20Malopinsky%20-%20http%3A%2F%2Fimsky.co%0A--%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%3C!%5BCDATA%5B%23holder_15bc5aa5890%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%5D%5D%3E%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15bc5aa5890%22%3E%3Crect%20width%3D%2292%22%20height%3D%22138%22%20fill%3D%22%23EEEEEE%22%2F%3E%3Cg%3E%3Ctext%20x%3D%2223.765625%22%20y%3D%2273.55625%22%3E92x138%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" class="" style="width: 92px; height: 138px;">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/1446462" href="person/1446462">
+            <p class="h4 ng-binding" style="margin:0 0 5px 0; word-break: break-word;">Dann Fink</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted ng-binding">Dodo (voice) (uncredited)</p>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: actor in movieCtrl.movie.credits.cast -->
+  </div>
+</div>
+
+<div class="loading fader fader-fast ng-hide" ng-show="loading" style=""></div>
+</div>
+</div>
+  </div>
+
+  <!-- vendor libs -->
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+  <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="../bower_components/angular-cookies/angular-cookies.min.js"></script>
+  <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+  <script src="../bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+  <script src="../bower_components/holderjs/holder.js"></script>
+  <script src="../bower_components/lodash/lodash.min.js"></script>
+  <script src="../node_modules/video.js/dist/video.js"></script>
+  <!-- end -->
+
+  <!-- components -->
+  <script src="components/components.module.js"></script>
+  <script src="components/imgHolder/imgHolder.directive.js"></script>
+  <script src="components/multiSearch/multiSearch.directive.js"></script>
+  <script src="components/backdrop/backdrop.directive.js"></script>
+  <script src="components/loading/loading.directive.js"></script>
+  <script src="components/showcaseItem/showcaseItem.directive.js"></script>
+  <!-- end -->
+
+  <!-- filters -->
+  <script src="filters/filters.module.js"></script>
+  <script src="filters/unique.filter.js"></script>
+  <!-- end -->
+
+  <!-- app scripts -->
+  <script src="app.module.js"></script>
+  <script src="app.run.js"></script>
+  <script src="app.config.js"></script>
+  <script src="app.constants.js"></script>
+  <script src="app.controller.js"></script>
+  <!-- end -->
+
+  <!-- authentication -->
+  <script src="authentication/authentication.module.js"></script>
+  <script src="authentication/authentication.service.js"></script>
+  <script src="authentication/authentication.controller.js"></script>
+  <!-- end -->
+
+  <!-- app header -->
+  <script src="app_header/app_header.module.js"></script>
+  <script src="app_header/app_header.controller.js"></script>
+  <!-- end -->
+
+  <!-- movie collections -->
+  <script src="movies/movies.module.js"></script>
+  <script src="movies/movies.constants.js"></script>
+  <script src="movies/movies.controller.js"></script>
+  <script src="services/movies.service.js"></script>
+  <!-- end -->
+
+  <!-- single movie -->
+  <script src="movie/movie.module.js"></script>
+  <script src="movie/movie.controller.js"></script>
+  <script src="movie/movieListItem.directive.js"></script>
+  <!-- end -->
+
+  <!-- person -->
+  <script src="person/person.module.js"></script>
+  <script src="person/person.controller.js"></script>
+  <script src="person/person.service.js"></script>
+  <!-- end -->
+
+  <!-- dashboard -->
+  <script src="dashboard/dashboard.module.js"></script>
+  <script src="dashboard/dashboard.controller.js"></script>
+  <!-- end -->
+
+  <!-- torrents -->
+  <script src="torrents/torrents.module.js"></script>
+  <script src="torrents/torrent_video.directive.js"></script>
+  <!-- end -->
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="92" height="138" viewBox="0 0 92 138" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="10" style="font-weight:bold;font-size:10pt;font-family:Arial, Helvetica, Open Sans, sans-serif">92x138</text></svg></body>
