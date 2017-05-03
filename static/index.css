@@ -136,3 +136,8 @@ iframe {
     padding: .1em .25em;
     font-size: 150%;
 }
+
+.star-rating {
+    font-size: 2em;
+    color: orangered;
+}
