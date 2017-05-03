@@ -72,8 +72,11 @@ Dashboard
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-9 col-sm-offset-1 col-md-10 col-md-offset-1 main">
-          <h2 class="page-header">{{type}}</h2>
+        <div class="col-sm-9 col-sm-offset-1 col-md-10 col-md-offset-1 main">   
+          <div class="row">
+            <h2 class="page-header" style="float: left">{{type}}</h2>               
+            <div style="float: right">{{ pagination.links }}</div>
+            </div>
           <div class="row placeholders">
             {% for movie in datalist.movie %}
             <div class="col-xs-6 col-sm-3 placeholder">
@@ -84,8 +87,9 @@ Dashboard
             {% endfor %}
 
           </div>
-            </div>
-          </div>
+          <div style="float: right">{{ pagination.links }}</div>    
         </div>
+      </div>
+    </div>
 
 {% endblock %}

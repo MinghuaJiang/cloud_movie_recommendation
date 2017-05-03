@@ -9,6 +9,7 @@ from wtforms.validators import InputRequired, Email, Length, EqualTo
 from dao import UserDao
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
+from flask_paginate import Pagination
 import mock_api as api
 
 logging.basicConfig(level=logging.INFO)
@@ -138,18 +139,20 @@ def reset():
 
 @application.route("/movies/top_rated", methods=['GET'])
 def movies_top_rated():
-    page = request.args.get('page')
+    page = request.args.get('page', default=1)
     type = 'top_rated'
     datalist=json.loads(api.get_paging_top_rated_movies(page))
-    return render_template('movie-list.html', datalist=datalist, page=page, type="Top Rated Movies", name=current_user.username)
+    pagination = Pagination(page=int(page), total=100, css_framework='bootstrap3')
+    return render_template('movie-list.html', datalist=datalist, page=page, pagination=pagination, type="Top Rated Movies", name=current_user.username)
 
 
 @application.route("/movies/most_popular", methods=['GET'])
 def movies_most_popular():
-    page = request.args.get('page')
+    page = request.args.get('page', default=1)
     type = 'most_popular'
     datalist=json.loads(api.get_paging_most_popular_movies(page))
-    return render_template('movie-list.html', datalist=datalist, page=page, type="Most Popular Movies", name=current_user.username)
+    pagination = Pagination(page=int(page), total=100, css_framework='bootstrap3')
+    return render_template('movie-list.html', datalist=datalist, page=page, pagination=pagination, type="Most Popular Movies", name=current_user.username)
 
 
 @application.route("/movies/genre/<genre>", methods=['GET'])
@@ -159,7 +162,8 @@ def movies_genre(genre):
         page = 1
     type = 'genre'
     datalist=json.loads(api.get_paging_genre_movies(page))
-    return render_template('movie-list.html', datalist=datalist, page=page, type=genre+" Movies", name=current_user.username)
+    pagination = Pagination(page=int(page), total=100, css_framework='bootstrap3')
+    return render_template('movie-list.html', datalist=datalist, page=page, pagination=pagination, type=genre+" Movies", name=current_user.username)
 
 
 @application.route("/movie/<int:movie_id>", methods=['GET'])
