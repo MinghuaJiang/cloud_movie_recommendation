@@ -142,7 +142,7 @@ def movies_top_rated():
     page = request.args.get('page', default=1)
     type = 'top_rated'
     datalist=json.loads(api.get_paging_top_rated_movies(page))
-    pagination = Pagination(page=int(page), total=100, css_framework='bootstrap3')
+    pagination = Pagination(page=int(page), total=100, per_page=16, css_framework='bootstrap3')
     return render_template('movie-list.html', datalist=datalist, page=page, pagination=pagination, type="Top Rated Movies", name=current_user.username)
 
 
@@ -151,7 +151,7 @@ def movies_most_popular():
     page = request.args.get('page', default=1)
     type = 'most_popular'
     datalist=json.loads(api.get_paging_most_popular_movies(page))
-    pagination = Pagination(page=int(page), total=100, css_framework='bootstrap3')
+    pagination = Pagination(page=int(page), total=100, per_page=16, css_framework='bootstrap3')
     return render_template('movie-list.html', datalist=datalist, page=page, pagination=pagination, type="Most Popular Movies", name=current_user.username)
 
 
@@ -162,7 +162,7 @@ def movies_genre(genre):
         page = 1
     type = 'genre'
     datalist=json.loads(api.get_paging_genre_movies(page))
-    pagination = Pagination(page=int(page), total=100, css_framework='bootstrap3')
+    pagination = Pagination(page=int(page), total=100, per_page=16, css_framework='bootstrap3')
     return render_template('movie-list.html', datalist=datalist, page=page, pagination=pagination, type=genre+" Movies", name=current_user.username)
 
 
