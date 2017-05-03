@@ -89,7 +89,8 @@ class ResetForm(FlaskForm):
 def index():
     datalist_pop=json.loads(api.get_most_popular_movies())
     datalist_rate=json.loads(api.get_top_rated_movies())
-    return render_template('index.html', datalist_pop=datalist_pop, datalist_rate=datalist_rate, name=current_user.username)
+    search=json.loads(api.search())
+    return render_template('index.html', search=search, datalist_pop=datalist_pop, datalist_rate=datalist_rate, name=current_user.username)
 
 @application.route("/login", methods=['GET', 'POST'])
 def login():
@@ -142,8 +143,9 @@ def movies_top_rated():
     page = request.args.get('page', default=1)
     type = 'top_rated'
     datalist=json.loads(api.get_paging_top_rated_movies(page))
+    search=json.loads(api.search())
     pagination = Pagination(page=int(page), total=100, per_page=16, css_framework='bootstrap3')
-    return render_template('movie-list.html', datalist=datalist, page=page, pagination=pagination, type="Top Rated Movies", name=current_user.username)
+    return render_template('movie-list.html', datalist=datalist, page=page, search=search, pagination=pagination, type="Top Rated Movies", name=current_user.username)
 
 
 @application.route("/movies/most_popular", methods=['GET'])
@@ -151,8 +153,9 @@ def movies_most_popular():
     page = request.args.get('page', default=1)
     type = 'most_popular'
     datalist=json.loads(api.get_paging_most_popular_movies(page))
+    search=json.loads(api.search())
     pagination = Pagination(page=int(page), total=100, per_page=16, css_framework='bootstrap3')
-    return render_template('movie-list.html', datalist=datalist, page=page, pagination=pagination, type="Most Popular Movies", name=current_user.username)
+    return render_template('movie-list.html', datalist=datalist, page=page, search=search, pagination=pagination, type="Most Popular Movies", name=current_user.username)
 
 
 @application.route("/movies/genre/<genre>", methods=['GET'])
@@ -162,14 +165,16 @@ def movies_genre(genre):
         page = 1
     type = 'genre'
     datalist=json.loads(api.get_paging_genre_movies(page))
+    search=json.loads(api.search())
     pagination = Pagination(page=int(page), total=100, per_page=16, css_framework='bootstrap3')
-    return render_template('movie-list.html', datalist=datalist, page=page, pagination=pagination, type=genre+" Movies", name=current_user.username)
+    return render_template('movie-list.html', datalist=datalist, page=page, search=search, pagination=pagination, type=genre+" Movies", name=current_user.username)
 
 
 @application.route("/movie/<int:movie_id>", methods=['GET'])
 def movie_detail(movie_id):
     data=json.loads(api.detail(movie_id))
-    return render_template('movie-detail.html', data=data, name=current_user.username)
+    search=json.loads(api.search())
+    return render_template('movie-detail.html', data=data, search=search, name=current_user.username)
 
 
 @application.route('/logout')

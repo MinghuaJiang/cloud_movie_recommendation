@@ -1,10 +1,9 @@
 import json
 
 
-def search(query):
+def search():
     result = dict()
-    result["json"] = [{'movie_name': 'Test', 'movie_small_url': 'Test'},
-                      {'movie_name': 'Test', 'movie_small_url': 'Test'}]
+    result["query"] = ['Blade Runner', 'Cool Hand Luke', 'Heat', 'Juice', 'Master and Commander: The Far Side of the World', 'Morituri', 'Napoleon Dynamite', 'On The Waterfront', 'Pulp Fiction', 'Rockers', 'Kids', 'Sanjuro', 'The Battle of Algiers', 'Fear and Loathing In Las Vegas', 'The Big Lebowski', 'To Catch a Thief', 'Unstoppable', 'Skyline', 'Harry Potter and the Deathly Hallows - Part 1', 'The Next Three Days', 'Falling Down', 'Fist Full Of Dollars', 'Burlesque', 'Faster', 'Love and Other Drugs', 'Tangled', "The King's Speech", 'Black Swan', "The Warrior's Way", 'The Chronicles of Narnia: The Voyage of the Dawn Treader', 'The Tourist', 'The Tempest', 'The Fighter', 'TRON: Legacy', 'How Do You Know', 'Rabbit Hole', 'Somewhere', 'Little Fockers', 'True Grit', "Gulliver's Travels", 'Blue Valentine', 'Country Strong']
     return json.dumps(result)
 
 
