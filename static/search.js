@@ -1,14 +1,18 @@
-    var movie_query = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.whitespace,
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      // url points to a json file
-      //  prefetch:
-      local: {{search.query|tojson|safe}}
-    });
 
-    // passing in `null` for the `options` arguments will result in the default
-    // options being used
-    $('.prefetch .typeahead').typeahead(null, {
-      name: 'movie_query',
-      source: movie_query
-    });
+$('#search').keypress(function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13){
+
+
+
+        var url = "http://localhost:5001/api/v1/search/"+$('#search').val()
+        $.get(url).done(function(data){
+            json = JSON.parse(data)
+            $.each(json, function(k,v){
+                alert(v.movie_title.text().substr(0,10))
+                $('#result').append("<li class='collection-item'>"+v.movie_title.substr(0, 10) + "..."+"</li>")
+            })
+            $('.awesome-results').show();
+        });
+    }
+})

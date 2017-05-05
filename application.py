@@ -10,7 +10,7 @@ from dao import UserDao
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_paginate import Pagination
-import mock_api as api
+import api
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -87,10 +87,18 @@ class ResetForm(FlaskForm):
 @application.route("/")
 @login_required
 def index():
-    datalist_pop=json.loads(api.get_most_popular_movies())
-    datalist_rate=json.loads(api.get_top_rated_movies())
-    search=json.loads(api.search())
-    return render_template('index.html', search=search, datalist_pop=datalist_pop, datalist_rate=datalist_rate, name=current_user.username)
+    datalist_pop = json.loads(api.get_most_popular(8))
+    datalist_rate = json.loads(api.get_top_rated(8))
+    rate_count = json.loads(api.get_rated_count(current_user.username))
+    if rate_count["count"] >= 5:
+        datalist_recommendation = api.get_personalized_recommendation(current_user.username, 8)
+        show_recommendation = True
+    else:
+        datalist_recommendation = []
+        show_recommendation = False
+    return render_template('index.html', datalist_pop=datalist_pop, datalist_rate=datalist_rate, datalist_recommendation = datalist_recommendation,
+                           show_recommendation=show_recommendation, user=current_user)
+
 
 @application.route("/login", methods=['GET', 'POST'])
 def login():
@@ -138,43 +146,20 @@ def reset():
     return render_template('reset.html', form=form)
 
 
-@application.route("/movies/top_rated", methods=['GET'])
-def movies_top_rated():
-    page = request.args.get('page', default=1)
-    type = 'top_rated'
-    datalist=json.loads(api.get_paging_top_rated_movies(page))
-    search=json.loads(api.search())
-    pagination = Pagination(page=int(page), total=100, per_page=16, css_framework='bootstrap3')
-    return render_template('movie-list.html', datalist=datalist, page=page, search=search, pagination=pagination, type="Top Rated Movies", name=current_user.username)
-
-
-@application.route("/movies/most_popular", methods=['GET'])
-def movies_most_popular():
-    page = request.args.get('page', default=1)
-    type = 'most_popular'
-    datalist=json.loads(api.get_paging_most_popular_movies(page))
-    search=json.loads(api.search())
-    pagination = Pagination(page=int(page), total=100, per_page=16, css_framework='bootstrap3')
-    return render_template('movie-list.html', datalist=datalist, page=page, search=search, pagination=pagination, type="Most Popular Movies", name=current_user.username)
-
-
 @application.route("/movies/genre/<genre>", methods=['GET'])
 def movies_genre(genre):
     page = request.args.get('page')
     if page is None:
         page = 1
-    type = 'genre'
-    datalist=json.loads(api.get_paging_genre_movies(page))
-    search=json.loads(api.search())
+    datalist = json.loads(api.get_paging_genre_movies(genre, page))
     pagination = Pagination(page=int(page), total=100, per_page=16, css_framework='bootstrap3')
-    return render_template('movie-list.html', datalist=datalist, page=page, search=search, pagination=pagination, type=genre+" Movies", name=current_user.username)
+    return render_template('movie-list.html', datalist=datalist, page=page, pagination=pagination, type=genre+" Movies", user=current_user)
 
 
 @application.route("/movie/<int:movie_id>", methods=['GET'])
 def movie_detail(movie_id):
-    data=json.loads(api.detail(movie_id))
-    search=json.loads(api.search())
-    return render_template('movie-detail.html', data=data, search=search, name=current_user.username)
+    data = json.loads(api.get_movie_detail(current_user.username, movie_id))
+    return render_template('movie-detail.html', data=data, user=current_user)
 
 
 @application.route('/logout')

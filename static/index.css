@@ -2,6 +2,25 @@
  * Base structure
  */
 
+#search{
+    width:400px;
+}
+
+.awesome-results{
+  position: relative;
+  z-index: 0;
+  display: none;
+}
+
+.collection{
+  margin-top: 10px;
+}
+
+.awesome-results li:hover{
+  background: #eee;
+  cursor: pointer;
+}
+
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;

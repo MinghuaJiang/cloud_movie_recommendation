@@ -16,6 +16,10 @@ $star_rating.on('click', function() {
 });
 
 SetRatingStar();
-$(document).ready(function() {
 
+var $submit = $('#submit');
+$submit.click(function() {
+   var comment = $("#user_comment").val();
+   alert(comment);
 });
+
