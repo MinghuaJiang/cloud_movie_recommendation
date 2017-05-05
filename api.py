@@ -1,7 +1,7 @@
 import json
 import urllib2
 
-host_root = "http://localhost:5001"
+host_root = "http://13.58.38.231:5000"
 
 
 def get_movie_detail(user_id, movie_id):
